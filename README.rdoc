@@ -7,14 +7,7 @@ Attempting to build a fast, memory efficient K-Means program.
 Download this repo and link to it.
 
 == How To Use
-  require 'rubygems'
-  require 'k_means'
-  
-  #unlike the original gem by red this k_means makes use of hashes. Otherwise it's the same.
-  @data = {'a'=>[1,1], 'b'=>[1,2], 'c'=>[1,1], 'd'=>[1000, 1000], 'e'=>[500, 500]}
-  kmeans = KMeans.new(@data, :centroids => 3)
-  puts kmeans.inspect  # Use kmeans.view to get hold of the un-inspected array
-=======
+
   require 'rubygems'
   require 'k_means'
 
