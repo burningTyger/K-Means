@@ -24,8 +24,8 @@ class TestCentroid < Test::Unit::TestCase
     
     should "reposition nodes" do
       nodes = create_nodes
-      average_position = [0.0] * nodes[0].position.size
-      nodes.each do |node|
+      average_position = [0.0] * nodes.first[1].position.size
+      nodes.each_pair do |key, node|
         node.position.each_with_index do |position, index|
           average_position[index] += position
         end
@@ -40,6 +40,6 @@ class TestCentroid < Test::Unit::TestCase
   private
   
   def create_nodes
-    Node.create_nodes([[1,2,3], [4,5,6]], :euclidean_distance)
+    Node.create_nodes({1=>[1,2,3], 2=>[4,5,6]}, :euclidean_distance)
   end
 end

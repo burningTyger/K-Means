@@ -4,11 +4,14 @@ class TestKMeans < Test::Unit::TestCase
   context "A KMeans Instance" do
     
     setup do
-      @data = Array.new(200) {Array.new(2) {rand}}
+	  @data = {}
+	    200.times do |i|
+      @data[i] = [rand, rand]
+	  end
       @kmeans = KMeans.new(@data, :centroids => 2, :distance_measure => :cosine_similarity)
     end
   
-    should "return an array" do
+    should "return a hash" do
       assert_kind_of String, @kmeans.inspect
     end
     

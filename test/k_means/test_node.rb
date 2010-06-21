@@ -11,14 +11,20 @@ class TestNode < Test::Unit::TestCase
       assert_kind_of Array, @node.position
     end
     
-    should "create an array of nodes" do
-      data = Array.new(10) {Array.new(2) {rand}}
+    should "create a hash of nodes" do
+	  data = {}
+	    10.times do |i|
+      data[i] = [rand, rand]
+	  end
       nodes = Node.create_nodes(data, :euclidean_distance)
-      assert_kind_of Array, nodes
+      assert_kind_of Hash, nodes
     end
     
     should "create 10 nodes" do
-      data = Array.new(10) {Array.new(2) {rand}}
+	  data = {}
+	    10.times do |i|
+      data[i] = [rand, rand]
+	  end
       nodes = Node.create_nodes(data, :euclidean_distance)
       assert_equal 10, nodes.size
     end

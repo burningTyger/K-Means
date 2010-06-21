@@ -2,9 +2,10 @@ class Node
   
   class << self
     def create_nodes(data, similarity_measure)
-      nodes = []
-      data.each do |position|
-        nodes << new(position, similarity_measure)
+      nodes = {}
+      data.each_pair do |key, position|
+        nodes[key] = new(position, similarity_measure)
+        #puts nodes.first.to_s
       end
       nodes
     end

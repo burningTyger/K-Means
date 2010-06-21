@@ -43,9 +43,9 @@ class KMeans
   def place_nodes_into_pockets
     centroid_pockets = Array.new(@centroids.size) {[]}
     @centroids.each_with_index do |centroid, centroid_index|
-      @nodes.each_with_index do |node, node_index|
+      @nodes.each_pair do |key, node|#|node, node_index|
         if node.closest_centroid == centroid
-          centroid_pockets[centroid_index] << node_index
+          centroid_pockets[centroid_index] << key
         end
       end
     end
@@ -54,7 +54,7 @@ class KMeans
     
   def update_nodes
     sum = 0
-    @nodes.each do |node|
+    @nodes.each_pair do |key, node|
       sum += node.update_closest_centroid(@centroids)
     end
     sum
@@ -62,8 +62,8 @@ class KMeans
   
   def reposition_centroids
     @centroids.each do |centroid|
-      nodes = [] 
-      @nodes.each {|n| nodes << n if n.closest_centroid == centroid}
+      nodes = {} 
+      @nodes.each_pair {|k, n| nodes[k] = n if n.closest_centroid == centroid}
       centroid.reposition(nodes)
     end
   end

@@ -2,7 +2,7 @@ class Centroid
   
   class << self
     def create_centroids(amount, nodes)
-      ranges = create_ranges(nodes, nodes[0].position.size)
+      ranges = create_ranges(nodes, nodes.first[1].position.size)
       (1..amount).map do
         position = ranges.inject([]) do |array, range|
           array << rand_between(range[0], range[1])
@@ -15,7 +15,7 @@ class Centroid
     
     def create_ranges(nodes, dimensions)
       ranges = Array.new(dimensions) {[0.0, 0.0]}
-      nodes.each do |node|
+      nodes.each_pair do |key, node|
         node.position.each_with_index do |position, index|
           # Bottom range
           ranges[index][0] = position if position < ranges[index][0]
@@ -37,8 +37,8 @@ class Centroid
   # the centroid and then moves the centroid to that position
   def reposition(nodes)
     return if nodes.empty?
-    averages = [0.0] * nodes[0].position.size
-    nodes.each do |node|
+    averages = [0.0] * nodes.first[1].position.size
+    nodes.each_pair do |key, node|
       node.position.each_with_index do |position, index|
         averages[index] += position
       end
