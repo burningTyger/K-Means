@@ -11,10 +11,11 @@ Download this repo and link to it.
   require 'rubygems'
   require 'k_means'
 
-  data = [[1,1], [1,2], [1,1], [1000, 1000], [500, 500]]
-  kmeans = KMeans.new(@data, :centroids => 2)
-  kmeans.inspect  # Use kmeans.view to get hold of the un-inspected array
-  => [[3, 4], [0, 1, 2]]
+  #unlike the original gem by red this k_means makes use of hashes. Otherwise it's the same.
+  @data = {'a'=>[1,1], 'b'=>[1,2], 'c'=>[1,1], 'd'=>[1000, 1000], 'e'=>[500, 500]}
+  kmeans = KMeans.new(@data, :centroids => 3)
+  puts kmeans.inspect  # Use kmeans.view to get hold of the un-inspected array
+  => [["e"], ["a", "b", "c"], ["d"]]
   
 == Distance Measurements
 
