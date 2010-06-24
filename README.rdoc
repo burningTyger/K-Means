@@ -4,26 +4,18 @@ Attempting to build a fast, memory efficient K-Means program.
 
 == Install
 
-  Download this repo and link to it.
+Download this repo and link to it.
 
 == How To Use
-<<<<<<< HEAD
-require 'rubygems'
-require 'k_means'
-  
+
+  require 'rubygems'
+  require 'k_means'
+
   #unlike the original gem by red this k_means makes use of hashes. Otherwise it's the same.
   @data = {'a'=>[1,1], 'b'=>[1,2], 'c'=>[1,1], 'd'=>[1000, 1000], 'e'=>[500, 500]}
   kmeans = KMeans.new(@data, :centroids => 3)
   puts kmeans.inspect  # Use kmeans.view to get hold of the un-inspected array
-=======
-  require 'rubygems'
-  require 'k_means'
-
-  data = [[1,1], [1,2], [1,1], [1000, 1000], [500, 500]]
-  kmeans = KMeans.new(@data, :centroids => 2)
-  kmeans.inspect  # Use kmeans.view to get hold of the un-inspected array
->>>>>>> parent of 39cf48d... added @ to data in example. Otherwise this is not going to work.
-  => [[3, 4], [0, 1, 2]]
+  => [["e"], ["a", "b", "c"], ["d"]]
   
 == Distance Measurements
 
@@ -85,4 +77,5 @@ You get the idea...
 == Copyright
 
 Copyright (c) 2009 Red Davis. See LICENSE for details.
+
 modified 2010 by burningTyger.
