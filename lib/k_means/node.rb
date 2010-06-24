@@ -5,7 +5,6 @@ class Node
       nodes = {}
       data.each_pair do |key, position|
         nodes[key] = new(position, similarity_measure)
-        #puts nodes.first.to_s
       end
       nodes
     end
